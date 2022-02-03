@@ -1,0 +1,13 @@
+@import '/src/styles/theme/colors/setttings.scss';
+
+.mainlayout {
+	display: flex;
+}
+
+.mainlayout__content {
+	position: relative;
+	height: 100vh;
+	left: 90px;
+	width: calc(100vw - 90px);
+	background: $grey;
+}

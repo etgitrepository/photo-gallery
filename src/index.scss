@@ -1,0 +1,16 @@
+@import './styles/theme/typography/settings.scss';
+
+@font-face {
+	font-family: $roboto;
+	src: url('./styles/theme/typography/fonts/Roboto-Regular.ttf')
+		format('truetype');
+}
+
+body {
+	margin: 0;
+	font-family: $roboto;
+
+	* {
+		box-sizing: border-box;
+	}
+}
