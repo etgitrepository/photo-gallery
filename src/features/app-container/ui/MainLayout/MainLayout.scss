@@ -1,13 +1,19 @@
 @import '/src/styles/theme/colors/setttings.scss';
+@import './src/styles/theme/responsive/settings.scss';
 
 .mainlayout {
 	display: flex;
+	background: $grey;
 }
 
 .mainlayout__content {
 	position: relative;
-	height: 100vh;
+	min-height: 100vh;
 	left: 90px;
 	width: calc(100vw - 90px);
-	background: $grey;
+
+	@include mobile {
+		left: unset;
+		width: unset;
+	}
 }

@@ -1,9 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { createAppViewModel } from './AppViewModel';
-
-import { MainGallery } from './features/gallery/ui/MainGallery/MainGallery';
 
 function App() {
 	const viewModel = createAppViewModel();
@@ -13,9 +11,13 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					{viewModel.navigationItems.map((item) => (
-						<Route path={item.link} element={<item.element />}></Route>
+						<Route
+							key={item.link}
+							path={item.link}
+							element={<item.element />}
+						></Route>
 					))}
-					<Route path="*" element={<MainGallery />}></Route>
+					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 			</BrowserRouter>
 		</>
