@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MainLayout } from './MainLayout';
+import { MemoryRouter } from 'react-router-dom';
 
 jest.mock('../Sidebar/Sidebar', () => ({
 	Sidebar: () => <>Mocked Sidebar</>,
@@ -8,7 +9,11 @@ jest.mock('../Sidebar/Sidebar', () => ({
 
 describe('MainLayout', () => {
 	const renderComponent = (children: string) => {
-		return render(<MainLayout>{children}</MainLayout>);
+		return render(
+			<MemoryRouter>
+				<MainLayout>{children}</MainLayout>
+			</MemoryRouter>,
+		);
 	};
 
 	it('will render provided children', () => {

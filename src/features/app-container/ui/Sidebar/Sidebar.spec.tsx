@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { NavigationScheme } from '../../../navigation/domain/models/NavigationScheme';
 import { getNavigationItems } from '../../../navigation/domain/use-cases/get-navigation-items/getNavigationItems';
 import { getNavigationItemLink } from '../../../navigation/ui/getNavigationItemLink';
 
-import { validateFunctionMock } from '../../../shared/helpers/test-helpers/validateFunctionMock';
+import { validateFunctionMock } from '../../../shared/test-helpers/validateFunctionMock';
 import { Sidebar } from './Sidebar';
 
 jest.mock(

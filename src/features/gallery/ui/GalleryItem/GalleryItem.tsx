@@ -3,14 +3,23 @@ import './GalleryItem.scss';
 
 interface IGalleryItemProps {
 	viewModel: IGalleryItemViewModel;
+	onGalleryItemClick: (id: string) => void;
 }
 
-export const GalleryItem = ({ viewModel }: IGalleryItemProps) => {
+export const GalleryItem = ({
+	viewModel,
+	onGalleryItemClick,
+}: IGalleryItemProps) => {
 	return (
-		<img
+		<div
 			className="gallery-item"
-			alt="gallery-img"
-			src={viewModel.photo.urls.small}
-		/>
+			onClick={() => onGalleryItemClick(viewModel.photo.id)}
+		>
+			<img
+				className="gallery-item__img"
+				alt="gallery-img"
+				src={viewModel.photo.urls.small}
+			/>
+		</div>
 	);
 };

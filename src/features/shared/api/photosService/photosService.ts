@@ -1,5 +1,5 @@
 import { ApiResponse } from 'unsplash-js/dist/helpers/response';
-import { Basic } from 'unsplash-js/dist/methods/photos/types';
+import { Basic, Full } from 'unsplash-js/dist/methods/photos/types';
 import { PaginationParams } from 'unsplash-js/dist/types/request';
 
 export type IPhotosService = ReturnType<typeof createPhotosService>;
@@ -12,5 +12,9 @@ export const createPhotosService = (client: any) => {
 		}>;
 	};
 
-	return { getPhotos };
+	const getPhotoById = async (photoId: string) => {
+		return client.get({ photoId }) as ApiResponse<Full>;
+	};
+
+	return { getPhotos, getPhotoById };
 };

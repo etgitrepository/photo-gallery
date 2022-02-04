@@ -10,8 +10,11 @@ jest.mock('../GalleryItem/GalleryItem.tsx', () => ({
 describe('Gallery', () => {
 	const renderComponent = (photos: IPhoto[][]) => {
 		const viewModel = createGalleryViewModel(photos);
+		const onGalleryItemClick = jest.fn();
 
-		return render(<Gallery viewModel={viewModel} />);
+		return render(
+			<Gallery viewModel={viewModel} onGalleryItemClick={onGalleryItemClick} />,
+		);
 	};
 
 	it('will render every photo', () => {
@@ -26,6 +29,7 @@ describe('Gallery', () => {
 						regular: 'some-url-regular',
 						thumb: 'some-url-thumb',
 					},
+					description: null,
 				},
 				{
 					id: 'some-id-2',
@@ -36,6 +40,7 @@ describe('Gallery', () => {
 						regular: 'some-url-regular',
 						thumb: 'some-url-thumb',
 					},
+					description: null,
 				},
 			],
 			[
@@ -48,6 +53,7 @@ describe('Gallery', () => {
 						regular: 'some-url-regular',
 						thumb: 'some-url-thumb',
 					},
+					description: null,
 				},
 				{
 					id: 'some-id-4',
@@ -58,6 +64,7 @@ describe('Gallery', () => {
 						regular: 'some-url-regular',
 						thumb: 'some-url-thumb',
 					},
+					description: null,
 				},
 			],
 		];

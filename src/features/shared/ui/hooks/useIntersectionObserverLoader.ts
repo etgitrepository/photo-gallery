@@ -15,7 +15,6 @@ export const useIntersectionObserverLoader = ({
 		const handleObserver = (entries: IntersectionObserverEntry[]) => {
 			const target = entries[0];
 			if (target.isIntersecting) {
-				console.log('intersect');
 				load();
 			}
 		};

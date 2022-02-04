@@ -6,4 +6,6 @@ export const mockedLocation = {
 jest.mock('react-router-dom', () => ({
 	useNavigate: () => mockedUsedNavigate,
 	useLocation: () => mockedLocation,
+	useSearchParams: () => [],
+	createSearchParams: () => undefined,
 }));

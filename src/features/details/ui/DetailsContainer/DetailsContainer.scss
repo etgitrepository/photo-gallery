@@ -1,0 +1,27 @@
+@import '/src/styles/theme/colors/setttings.scss';
+
+.details-container {
+	position: fixed;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	color: $white;
+	background: $grey-opacity-70;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.details-wrapper {
+	width: 70vw;
+	height: 652px;
+	display: flex;
+	border-radius: 10px;
+	background: $grey-opacity-80;
+	max-width: 988px;
+}

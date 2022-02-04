@@ -18,6 +18,7 @@ describe('photosStore', () => {
 				regular: 'some-url-regular',
 				thumb: 'some-url-thumb',
 			},
+			description: null,
 		},
 		{
 			id: 'some-id-2',
@@ -28,6 +29,7 @@ describe('photosStore', () => {
 				regular: 'some-url-regular',
 				thumb: 'some-url-thumb',
 			},
+			description: null,
 		},
 	];
 
@@ -48,6 +50,7 @@ describe('photosStore', () => {
 						regular: 'some-url-regular',
 						thumb: 'some-url-thumb',
 					},
+					description: null,
 				},
 			],
 			undefined,
@@ -61,6 +64,7 @@ describe('photosStore', () => {
 						regular: 'some-url-regular',
 						thumb: 'some-url-thumb',
 					},
+					description: null,
 				},
 			],
 		]);
@@ -74,6 +78,7 @@ describe('photosStore', () => {
 
 		store.reset();
 
-		expect(store.page).toBe(0);
+		expect(store.findPhotos()).toEqual([]);
+		expect(store.findPage()).toBe(0);
 	});
 });

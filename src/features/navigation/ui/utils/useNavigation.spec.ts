@@ -1,4 +1,4 @@
-import { mockedUsedNavigate } from '../../../shared/helpers/test-helpers/mockRouter';
+import { mockedUsedNavigate } from '../../../shared/test-helpers/mockRouter';
 import { NavigationScheme } from '../../domain/models/NavigationScheme';
 import { getNavigationItemLink } from '../getNavigationItemLink';
 import { useNavigation } from './useNavigation';
@@ -9,8 +9,9 @@ describe('useNavigation', () => {
 
 		navigate(NavigationScheme.Gallery);
 
-		expect(mockedUsedNavigate).toBeCalledWith(
-			getNavigationItemLink(NavigationScheme.Gallery),
-		);
+		expect(mockedUsedNavigate).toBeCalledWith({
+			pathname: getNavigationItemLink(NavigationScheme.Gallery),
+			search: '',
+		});
 	});
 });

@@ -31,7 +31,15 @@ export const createPhotosStore = (getPhotos: IGetPhotos) => {
 		page = 0;
 	};
 
-	return { loadMore, reset, photos, page };
+	const findPhotos = () => {
+		return photos;
+	};
+
+	const findPage = () => {
+		return page;
+	};
+
+	return { loadMore, reset, findPhotos, findPage };
 };
 
 const splitData = (photos: IPhoto[]): IPhoto[][] => {
