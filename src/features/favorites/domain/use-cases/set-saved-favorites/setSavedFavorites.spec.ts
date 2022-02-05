@@ -21,6 +21,7 @@ describe('setSavedFavorites', () => {
 				{
 					urls: { raw: '', full: '', regular: '', thumb: '', small: '' },
 					id: 'some-id',
+					uniqueId: 'some-random-id',
 					description: 'some-description',
 				},
 			],
@@ -29,7 +30,7 @@ describe('setSavedFavorites', () => {
 		setSavedFavorites(data);
 
 		expect(mockedSet).toBeCalledWith(
-			'{"photos":[{"urls":{"raw":"","full":"","regular":"","thumb":"","small":""},"id":"some-id","description":"some-description"}]}',
+			'{"photos":[{"urls":{"raw":"","full":"","regular":"","thumb":"","small":""},"id":"some-id","uniqueId":"some-random-id","description":"some-description"}]}',
 		);
 	});
 });

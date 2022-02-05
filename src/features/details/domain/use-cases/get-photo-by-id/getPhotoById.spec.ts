@@ -1,6 +1,8 @@
 import { createPhotosServiceMock } from '../../../../shared/api/photosService/_mocks_/photosServiceMock';
 import { createGetPhotoById } from './getPhotoById';
 
+jest.mock('../../../../shared/helpers/randomIdentifier.ts');
+
 describe('getPhotoById', () => {
 	const createUseCase = (
 		serviceGetPhotoById = jest.fn().mockResolvedValue({}),

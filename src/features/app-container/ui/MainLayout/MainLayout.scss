@@ -4,16 +4,16 @@
 .mainlayout {
 	display: flex;
 	background: $grey;
-}
 
-.mainlayout__content {
-	position: relative;
-	min-height: 100vh;
-	left: 90px;
-	width: calc(100vw - 90px);
+	&__content {
+		position: relative;
+		min-height: 100vh;
+		left: 90px;
+		width: calc(100vw - 90px);
 
-	@include mobile {
-		left: unset;
-		width: 100%;
+		@include mobile {
+			left: unset;
+			width: 100%;
+		}
 	}
 }

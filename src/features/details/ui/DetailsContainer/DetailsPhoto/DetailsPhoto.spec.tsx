@@ -6,7 +6,8 @@ import { createDetailsPhotoViewModel } from './DetailsPhotoViewModel';
 describe('DetailsPhoto', () => {
 	const renderComponent = () => {
 		const photo: IPhoto = {
-			id: 'ome-photo-id',
+			id: 'some-photo-id',
+			uniqueId: 'some-random-id',
 			description: 'some-description',
 			urls: {
 				raw: '',

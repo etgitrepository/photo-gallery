@@ -7,8 +7,8 @@
 	outline: none;
 	cursor: pointer;
 	border-radius: 10px;
-}
 
-.rounded-button--selected {
-	background: $grey-3;
+	&--selected {
+		background: $grey-3;
+	}
 }

@@ -14,5 +14,10 @@
 	@include mobile {
 		width: 100%;
 		height: 45%;
+
+		img {
+			width: 100%;
+			height: unset;
+		}
 	}
 }

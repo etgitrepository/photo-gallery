@@ -2,6 +2,7 @@ import { IPhoto } from '../../../../gallery/domain/models/IPhoto';
 import { maybeMapValue } from '../../../../shared/helpers/maybeMapValue';
 import CrossIcon from '../../../../../assets/icons/cross.svg';
 import FavoriteIcon from '../../../../../assets/icons/favorite.svg';
+import DefaultUserIcon from '../../../../../assets/icons/default_user.svg';
 
 export type IDetailsViewModel = ReturnType<typeof createDetailsViewModel>;
 
@@ -15,7 +16,7 @@ export const createDetailsViewModel = (photo: IPhoto, isFavorite: boolean) => ({
 	description: maybeMapValue(photo.description, (value) => value),
 	user: maybeMapValue(photo.user, (value) => ({
 		name: value.name,
-		image: value.profileImage || '',
+		image: value.profileImage || DefaultUserIcon,
 	})),
 	machine: maybeMapValue(photo.machine, (value) => {
 		const details = [

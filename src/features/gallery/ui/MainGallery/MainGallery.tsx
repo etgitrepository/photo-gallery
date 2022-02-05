@@ -1,8 +1,9 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { MainLayout } from '../../../app-container/ui/MainLayout/MainLayout';
-import { getFavoritePhotos } from '../../../favorites/domain/stores/favoritesReducer/favoritesReducer';
+import { isPhotoFavorite } from '../../../favorites/domain/stores/favoritesReducer/favoritesReducer';
 import { useNavigation } from '../../../navigation/ui/utils/useNavigation';
 import { useAppSelector } from '../../../shared/store/hooks';
+import { useColumnNumberForWidth } from '../../../shared/ui/hooks/useColumnNumberForWidth';
 import { useIntersectionObserverLoader } from '../../../shared/ui/hooks/useIntersectionObserverLoader';
 import { IPhoto } from '../../domain/models/IPhoto';
 import { photosStore } from '../../domain/store';
@@ -11,10 +12,11 @@ import { createGalleryViewModel } from '../Gallery/GalleryViewModel';
 import './MainGallery.scss';
 
 export const MainGallery = () => {
-	const [photos, setPhotos] = useState<IPhoto[][]>([]);
+	const [photos, setPhotos] = useState<IPhoto[]>([]);
 	const loaderRef = useRef<HTMLDivElement | null>(null);
 	const { navigate } = useNavigation();
-	const favorites = useAppSelector(getFavoritePhotos);
+	const isFavorite = useAppSelector(isPhotoFavorite);
+	const columns = useColumnNumberForWidth();
 
 	const load = useCallback(() => {
 		photosStore.loadMore().then((data) => setPhotos([...data]));
@@ -24,13 +26,17 @@ export const MainGallery = () => {
 		photosStore.reset();
 	}, []);
 
+	useEffect(() => {
+		load();
+	}, [load]);
+
+	useIntersectionObserverLoader({ load, reset, target: loaderRef });
+
 	const onGalleryItemClick = (photoId: string) => {
 		navigate(undefined, { photoId });
 	};
 
-	useIntersectionObserverLoader({ load, reset, target: loaderRef });
-
-	const galleryViewModel = createGalleryViewModel(photos, favorites);
+	const galleryViewModel = createGalleryViewModel(photos, isFavorite, columns);
 
 	return (
 		<MainLayout>

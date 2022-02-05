@@ -15,7 +15,7 @@ export const Gallery = ({ viewModel, onGalleryItemClick }: IGalleryProps) => {
 					{column.map((photo) => (
 						<GalleryItem
 							viewModel={photo}
-							key={photo.photo.id}
+							key={photo.photo.uniqueId}
 							onGalleryItemClick={onGalleryItemClick}
 						/>
 					))}

@@ -1,13 +1,12 @@
-import { splitArrayIntoMultipleArrays } from '../../../../shared/helpers/splitArrayIntoMultipleArrays';
 import { IPhoto } from '../../models/IPhoto';
 import { IGetPhotos } from '../../use-cases/get-photos/getPhotos';
 
-const PHOTOS_PER_PAGE = 30;
+const PHOTOS_PER_PAGE = 15;
 
 export type IPhotosStore = ReturnType<typeof createPhotosStore>;
 
 export const createPhotosStore = (getPhotos: IGetPhotos) => {
-	let photos: IPhoto[][] = [];
+	let photos: IPhoto[] = [];
 	let page = 0;
 
 	const loadMore = async () => {
@@ -16,12 +15,9 @@ export const createPhotosStore = (getPhotos: IGetPhotos) => {
 		const result = await getPhotos(page, PHOTOS_PER_PAGE);
 
 		if (result) {
-			const splittedResult = splitArrayIntoMultipleArrays(result, 5);
+			photos = [...photos, ...result];
 
-			splittedResult.forEach((column, index) => {
-				if (photos[index]) photos[index] = [...photos[index], ...column];
-				else photos[index] = [...column];
-			});
+			return photos;
 		}
 
 		return photos;

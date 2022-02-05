@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-	getFavoritePhotos,
+	isPhotoFavorite,
 	toggle,
 } from '../../../favorites/domain/stores/favoritesReducer/favoritesReducer';
 import { IPhoto } from '../../../gallery/domain/models/IPhoto';
@@ -20,7 +20,7 @@ interface IDetailsContainerProps {
 
 export const DetailsContainer = ({ photoId }: IDetailsContainerProps) => {
 	const [photo, setPhoto] = useState<IPhoto | undefined>();
-	const favorites = useAppSelector(getFavoritePhotos);
+	const isFavorite = useAppSelector(isPhotoFavorite);
 	const { navigate } = useNavigation();
 	const dispatch = useAppDispatch();
 
@@ -39,10 +39,7 @@ export const DetailsContainer = ({ photoId }: IDetailsContainerProps) => {
 	};
 
 	const detailsPhotoViewModel = createDetailsPhotoViewModel(photo);
-	const detailsViewModel = createDetailsViewModel(
-		photo,
-		favorites.some((favorite) => favorite.id === photo.id),
-	);
+	const detailsViewModel = createDetailsViewModel(photo, isFavorite(photo));
 
 	return (
 		<Portal>

@@ -11,6 +11,7 @@ describe('photosStore', () => {
 	const photosMock: IPhoto[] = [
 		{
 			id: 'some-id',
+			uniqueId: 'some-random-id',
 			urls: {
 				small: 'some-url-small',
 				full: 'some-url-full',
@@ -22,6 +23,7 @@ describe('photosStore', () => {
 		},
 		{
 			id: 'some-id-2',
+			uniqueId: 'some-random-id',
 			urls: {
 				small: 'some-url-small',
 				full: 'some-url-full',
@@ -40,33 +42,31 @@ describe('photosStore', () => {
 		const result = await store.loadMore();
 
 		expect(result).toEqual([
-			[
-				{
-					id: 'some-id',
-					urls: {
-						small: 'some-url-small',
-						full: 'some-url-full',
-						raw: 'some-url-raw',
-						regular: 'some-url-regular',
-						thumb: 'some-url-thumb',
-					},
-					description: null,
+			{
+				id: 'some-id',
+				uniqueId: 'some-random-id',
+				urls: {
+					small: 'some-url-small',
+					full: 'some-url-full',
+					raw: 'some-url-raw',
+					regular: 'some-url-regular',
+					thumb: 'some-url-thumb',
 				},
-			],
-			undefined,
-			[
-				{
-					id: 'some-id-2',
-					urls: {
-						small: 'some-url-small',
-						full: 'some-url-full',
-						raw: 'some-url-raw',
-						regular: 'some-url-regular',
-						thumb: 'some-url-thumb',
-					},
-					description: null,
+				description: null,
+			},
+
+			{
+				id: 'some-id-2',
+				uniqueId: 'some-random-id',
+				urls: {
+					small: 'some-url-small',
+					full: 'some-url-full',
+					raw: 'some-url-raw',
+					regular: 'some-url-regular',
+					thumb: 'some-url-thumb',
 				},
-			],
+				description: null,
+			},
 		]);
 	});
 

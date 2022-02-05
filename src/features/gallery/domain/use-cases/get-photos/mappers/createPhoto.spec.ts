@@ -1,6 +1,8 @@
 import { Basic } from 'unsplash-js/dist/methods/photos/types';
 import { createPhoto } from './createPhoto';
 
+jest.mock('../../../../../shared/helpers/randomIdentifier');
+
 describe('createPhoto', () => {
 	it('will map get photos response to domain photos', () => {
 		const response = {

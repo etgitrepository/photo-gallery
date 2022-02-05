@@ -10,6 +10,7 @@ describe('detailsStore', () => {
 
 	const photoMock: IPhoto = {
 		id: 'some-id',
+		uniqueId: 'some-random-id',
 		urls: {
 			small: 'some-url-small',
 			full: 'some-url-full',
@@ -29,6 +30,7 @@ describe('detailsStore', () => {
 
 		expect(result).toEqual({
 			id: 'some-id',
+			uniqueId: 'some-random-id',
 			urls: {
 				small: 'some-url-small',
 				full: 'some-url-full',
@@ -51,6 +53,7 @@ describe('detailsStore', () => {
 
 		expect(photo).toEqual({
 			id: 'some-id',
+			uniqueId: 'some-random-id',
 			urls: {
 				small: 'some-url-small',
 				full: 'some-url-full',

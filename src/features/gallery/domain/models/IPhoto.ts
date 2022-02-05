@@ -1,5 +1,6 @@
 export interface IPhoto {
 	id: string;
+	uniqueId: string;
 	urls: {
 		raw: string;
 		full: string;

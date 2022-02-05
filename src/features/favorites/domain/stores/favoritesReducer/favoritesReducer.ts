@@ -1,12 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IPhoto } from '../../../../gallery/domain/models/IPhoto';
-import { splitArrayIntoMultipleArrays } from '../../../../shared/helpers/splitArrayIntoMultipleArrays';
 import { RootState } from '../../../../shared/store/store';
 
 import { IFavoritesState } from '../../model/IFavoritesState';
 import { getSavedFavorites } from '../../use-cases';
-
-export const createFavoritesReducer = () => {};
 
 const getInitialState = () => {
 	const initialState: IFavoritesState = {
@@ -35,7 +32,7 @@ export const favoritesSlice = createSlice({
 export const { toggle } = favoritesSlice.actions;
 
 export const getFavoritePhotos = (state: RootState) => state.favorites.photos;
-export const getFavoritePhotosSplitted = (state: RootState) =>
-	splitArrayIntoMultipleArrays(state.favorites.photos, 5);
+export const isPhotoFavorite = (state: RootState) => (photo: IPhoto) =>
+	state.favorites.photos.some((favorite) => favorite.id === photo.id);
 
 export default favoritesSlice.reducer;

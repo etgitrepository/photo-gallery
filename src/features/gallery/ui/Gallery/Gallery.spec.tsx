@@ -8,8 +8,10 @@ jest.mock('../Gallery/GalleryItem/GalleryItem.tsx', () => ({
 }));
 
 describe('Gallery', () => {
-	const renderComponent = (photos: IPhoto[][]) => {
-		const viewModel = createGalleryViewModel(photos, []);
+	const renderComponent = (photos: IPhoto[]) => {
+		const isFavorite = jest.fn();
+		const columnNumber = 5;
+		const viewModel = createGalleryViewModel(photos, isFavorite, columnNumber);
 		const onGalleryItemClick = jest.fn();
 
 		return render(
@@ -18,55 +20,56 @@ describe('Gallery', () => {
 	};
 
 	it('will render every photo', () => {
-		const photosMock: IPhoto[][] = [
-			[
-				{
-					id: 'some-id',
-					urls: {
-						small: 'some-url-small',
-						full: 'some-url-full',
-						raw: 'some-url-raw',
-						regular: 'some-url-regular',
-						thumb: 'some-url-thumb',
-					},
-					description: null,
+		const photosMock: IPhoto[] = [
+			{
+				id: 'some-id',
+				uniqueId: 'some-random-id',
+				urls: {
+					small: 'some-url-small',
+					full: 'some-url-full',
+					raw: 'some-url-raw',
+					regular: 'some-url-regular',
+					thumb: 'some-url-thumb',
 				},
-				{
-					id: 'some-id-2',
-					urls: {
-						small: 'some-url-small',
-						full: 'some-url-full',
-						raw: 'some-url-raw',
-						regular: 'some-url-regular',
-						thumb: 'some-url-thumb',
-					},
-					description: null,
+				description: null,
+			},
+			{
+				id: 'some-id-2',
+				uniqueId: 'some-random-id',
+				urls: {
+					small: 'some-url-small',
+					full: 'some-url-full',
+					raw: 'some-url-raw',
+					regular: 'some-url-regular',
+					thumb: 'some-url-thumb',
 				},
-			],
-			[
-				{
-					id: 'some-id-3',
-					urls: {
-						small: 'some-url-small',
-						full: 'some-url-full',
-						raw: 'some-url-raw',
-						regular: 'some-url-regular',
-						thumb: 'some-url-thumb',
-					},
-					description: null,
+				description: null,
+			},
+
+			{
+				id: 'some-id-3',
+				uniqueId: 'some-random-id',
+				urls: {
+					small: 'some-url-small',
+					full: 'some-url-full',
+					raw: 'some-url-raw',
+					regular: 'some-url-regular',
+					thumb: 'some-url-thumb',
 				},
-				{
-					id: 'some-id-4',
-					urls: {
-						small: 'some-url-small',
-						full: 'some-url-full',
-						raw: 'some-url-raw',
-						regular: 'some-url-regular',
-						thumb: 'some-url-thumb',
-					},
-					description: null,
+				description: null,
+			},
+			{
+				id: 'some-id-4',
+				uniqueId: 'some-random-id',
+				urls: {
+					small: 'some-url-small',
+					full: 'some-url-full',
+					raw: 'some-url-raw',
+					regular: 'some-url-regular',
+					thumb: 'some-url-thumb',
 				},
-			],
+				description: null,
+			},
 		];
 		renderComponent(photosMock);
 
