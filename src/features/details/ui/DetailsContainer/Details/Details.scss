@@ -10,6 +10,25 @@
 	.details__actions-container {
 		display: flex;
 
+		.details__favorite-button {
+			background: $grey-2;
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 16px;
+			color: $white;
+
+			img {
+				margin-right: 8px;
+			}
+		}
+
+		.details__favorite-button--favorite {
+			background: $blue-2;
+		}
+
 		.details__close-button {
 			margin-left: auto;
 			display: flex;
@@ -24,6 +43,7 @@
 		font-size: 32px;
 		line-height: 37px;
 		margin-bottom: 4px;
+		word-break: break-word;
 	}
 
 	.details__user {

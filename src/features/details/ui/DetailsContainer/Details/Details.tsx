@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { RoundedButton } from '../../../../shared/ui/Button/RoundedButton';
 
 import './Details.scss';
@@ -7,12 +8,29 @@ import { IDetailsViewModel } from './DetailsViewModel';
 interface IDetailsProps {
 	viewModel: IDetailsViewModel;
 	onCloseButtonClick: () => void;
+	onToggleFavoriteClick: () => void;
 }
 
-export const Details = ({ viewModel, onCloseButtonClick }: IDetailsProps) => {
+export const Details = ({
+	viewModel,
+	onCloseButtonClick,
+	onToggleFavoriteClick,
+}: IDetailsProps) => {
 	return (
 		<div className="details">
 			<div className="details__actions-container">
+				<RoundedButton
+					className={`details__favorite-button ${
+						viewModel.isFavorite ? 'details__favorite-button--favorite' : ''
+					}`}
+					onClick={onToggleFavoriteClick}
+				>
+					<img
+						src={viewModel.favoriteButton.icon}
+						alt="details-favorite-button"
+					/>
+					<span>{viewModel.favoriteButton.label}</span>
+				</RoundedButton>
 				<RoundedButton
 					className="details__close-button"
 					onClick={onCloseButtonClick}

@@ -1,10 +1,16 @@
 import { IPhoto } from '../../../../gallery/domain/models/IPhoto';
 import { maybeMapValue } from '../../../../shared/helpers/maybeMapValue';
 import CrossIcon from '../../../../../assets/icons/cross.svg';
+import FavoriteIcon from '../../../../../assets/icons/favorite.svg';
 
 export type IDetailsViewModel = ReturnType<typeof createDetailsViewModel>;
 
-export const createDetailsViewModel = (photo: IPhoto) => ({
+export const createDetailsViewModel = (photo: IPhoto, isFavorite: boolean) => ({
+	favoriteButton: {
+		icon: FavoriteIcon,
+		label: isFavorite ? 'Unlike' : 'Like',
+	},
+	isFavorite,
 	closeButtonIcon: CrossIcon,
 	description: maybeMapValue(photo.description, (value) => value),
 	user: maybeMapValue(photo.user, (value) => ({

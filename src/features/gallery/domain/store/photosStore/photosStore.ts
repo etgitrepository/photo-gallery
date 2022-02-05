@@ -1,3 +1,4 @@
+import { splitArrayIntoMultipleArrays } from '../../../../shared/helpers/splitArrayIntoMultipleArrays';
 import { IPhoto } from '../../models/IPhoto';
 import { IGetPhotos } from '../../use-cases/get-photos/getPhotos';
 
@@ -15,7 +16,7 @@ export const createPhotosStore = (getPhotos: IGetPhotos) => {
 		const result = await getPhotos(page, PHOTOS_PER_PAGE);
 
 		if (result) {
-			const splittedResult = splitData(result);
+			const splittedResult = splitArrayIntoMultipleArrays(result, 5);
 
 			splittedResult.forEach((column, index) => {
 				if (photos[index]) photos[index] = [...photos[index], ...column];
@@ -40,22 +41,4 @@ export const createPhotosStore = (getPhotos: IGetPhotos) => {
 	};
 
 	return { loadMore, reset, findPhotos, findPage };
-};
-
-const splitData = (photos: IPhoto[]): IPhoto[][] => {
-	const perChunk = photos.length / 5;
-
-	const result = photos.reduce((resultArray: IPhoto[][], item, index) => {
-		const chunkIndex = Math.floor(index / perChunk);
-
-		if (!resultArray[chunkIndex]) {
-			resultArray[chunkIndex] = []; // start a new chunk
-		}
-
-		resultArray[chunkIndex].push(item);
-
-		return resultArray;
-	}, []);
-
-	return result;
 };

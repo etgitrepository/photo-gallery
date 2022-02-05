@@ -1,6 +1,6 @@
 import { IGalleryViewModel } from './GalleryViewModel';
 import './Gallery.scss';
-import { GalleryItem } from '../GalleryItem/GalleryItem';
+import { GalleryItem } from './GalleryItem/GalleryItem';
 
 interface IGalleryProps {
 	viewModel: IGalleryViewModel;

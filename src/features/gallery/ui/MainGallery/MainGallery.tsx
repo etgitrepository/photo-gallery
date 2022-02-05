@@ -1,6 +1,8 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { MainLayout } from '../../../app-container/ui/MainLayout/MainLayout';
+import { getFavoritePhotos } from '../../../favorites/domain/stores/favoritesReducer/favoritesReducer';
 import { useNavigation } from '../../../navigation/ui/utils/useNavigation';
+import { useAppSelector } from '../../../shared/store/hooks';
 import { useIntersectionObserverLoader } from '../../../shared/ui/hooks/useIntersectionObserverLoader';
 import { IPhoto } from '../../domain/models/IPhoto';
 import { photosStore } from '../../domain/store';
@@ -12,6 +14,7 @@ export const MainGallery = () => {
 	const [photos, setPhotos] = useState<IPhoto[][]>([]);
 	const loaderRef = useRef<HTMLDivElement | null>(null);
 	const { navigate } = useNavigation();
+	const favorites = useAppSelector(getFavoritePhotos);
 
 	const load = useCallback(() => {
 		photosStore.loadMore().then((data) => setPhotos([...data]));
@@ -27,7 +30,7 @@ export const MainGallery = () => {
 
 	useIntersectionObserverLoader({ load, reset, target: loaderRef });
 
-	const galleryViewModel = createGalleryViewModel(photos);
+	const galleryViewModel = createGalleryViewModel(photos, favorites);
 
 	return (
 		<MainLayout>

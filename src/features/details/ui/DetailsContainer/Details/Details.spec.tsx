@@ -4,7 +4,11 @@ import { Details } from './Details';
 import { createDetailsViewModel } from './DetailsViewModel';
 
 describe('Details', () => {
-	const renderComponent = (onCloseButtonClick = jest.fn()) => {
+	const renderComponent = (
+		onCloseButtonClick = jest.fn(),
+		onToggleFavoriteClick = jest.fn(),
+		isFavorite = false,
+	) => {
 		const photo: IPhoto = {
 			id: 'ome-photo-id',
 			description: 'some-description',
@@ -29,10 +33,14 @@ describe('Details', () => {
 			},
 		};
 
-		const viewModel = createDetailsViewModel(photo);
+		const viewModel = createDetailsViewModel(photo, isFavorite);
 
 		return render(
-			<Details viewModel={viewModel} onCloseButtonClick={onCloseButtonClick} />,
+			<Details
+				viewModel={viewModel}
+				onCloseButtonClick={onCloseButtonClick}
+				onToggleFavoriteClick={onToggleFavoriteClick}
+			/>,
 		);
 	};
 
@@ -66,7 +74,7 @@ describe('Details', () => {
 
 		const buttons = screen.getAllByRole('button');
 
-		fireEvent.click(buttons[0]);
+		fireEvent.click(buttons[1]);
 
 		expect(onCloseButtonClick).toBeCalled();
 	});

@@ -3,13 +3,13 @@ import { IPhoto } from '../../domain/models/IPhoto';
 import { Gallery } from './Gallery';
 import { createGalleryViewModel } from './GalleryViewModel';
 
-jest.mock('../GalleryItem/GalleryItem.tsx', () => ({
+jest.mock('../Gallery/GalleryItem/GalleryItem.tsx', () => ({
 	GalleryItem: () => <div>Mocked Gallery Item</div>,
 }));
 
 describe('Gallery', () => {
 	const renderComponent = (photos: IPhoto[][]) => {
-		const viewModel = createGalleryViewModel(photos);
+		const viewModel = createGalleryViewModel(photos, []);
 		const onGalleryItemClick = jest.fn();
 
 		return render(

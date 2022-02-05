@@ -1,31 +1,19 @@
-import { createStore } from '@reduxjs/toolkit';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../../shared/store/store';
-import { MainGallery } from './MainGallery';
+import { MainFavorites } from './MainFavorites';
 
-jest.mock('../Gallery/Gallery.tsx', () => ({
+jest.mock('../../../gallery/ui/Gallery/Gallery.tsx', () => ({
 	Gallery: () => <>Mocked Gallery</>,
 }));
 
-beforeEach(() => {
-	// IntersectionObserver isn't available in test environment
-	const mockIntersectionObserver = jest.fn();
-	mockIntersectionObserver.mockReturnValue({
-		observe: () => null,
-		unobserve: () => null,
-		disconnect: () => null,
-	});
-	window.IntersectionObserver = mockIntersectionObserver;
-});
-
-describe('MainGallery', () => {
+describe('MainFavorites', () => {
 	const renderComponent = () => {
 		return render(
 			<Provider store={store}>
 				<MemoryRouter>
-					<MainGallery />
+					<MainFavorites />
 				</MemoryRouter>
 				,
 			</Provider>,
