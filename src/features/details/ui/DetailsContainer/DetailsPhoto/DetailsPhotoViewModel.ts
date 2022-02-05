@@ -5,5 +5,5 @@ export type IDetailsPhotoViewModel = ReturnType<
 >;
 
 export const createDetailsPhotoViewModel = (photo: IPhoto) => ({
-	image: photo.urls.raw + '&h=325',
+	image: photo.urls.thumb,
 });

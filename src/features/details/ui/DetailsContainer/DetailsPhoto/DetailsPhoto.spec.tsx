@@ -9,10 +9,10 @@ describe('DetailsPhoto', () => {
 			id: 'ome-photo-id',
 			description: 'some-description',
 			urls: {
-				raw: 'some-raw-url',
+				raw: '',
 				full: '',
 				small: '',
-				thumb: '',
+				thumb: 'some-thumb-url',
 				regular: '',
 			},
 		};
@@ -25,9 +25,6 @@ describe('DetailsPhoto', () => {
 	it('will render photo', () => {
 		renderComponent();
 
-		expect(screen.getByRole('img')).toHaveAttribute(
-			'src',
-			'some-raw-url&h=325',
-		);
+		expect(screen.getByRole('img')).toHaveAttribute('src', 'some-thumb-url');
 	});
 });

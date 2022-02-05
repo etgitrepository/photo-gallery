@@ -1,4 +1,5 @@
 @import '/src/styles/theme/colors/setttings.scss';
+@import './src/styles/theme/responsive/settings.scss';
 
 .details-container {
 	position: fixed;
@@ -24,4 +25,12 @@
 	border-radius: 10px;
 	background: $grey-opacity-80;
 	max-width: 988px;
+
+	@include mobile {
+		flex-direction: column;
+		max-width: 303px;
+		max-height: 485px;
+		overflow: hidden;
+		position: relative;
+	}
 }

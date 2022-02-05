@@ -1,4 +1,5 @@
 @import '/src/styles/theme/colors/setttings.scss';
+@import './src/styles/theme/responsive/settings.scss';
 
 .details {
 	width: 50%;
@@ -9,6 +10,7 @@
 
 	.details__actions-container {
 		display: flex;
+		margin-bottom: 24px;
 
 		.details__favorite-button {
 			background: $grey-2;
@@ -85,6 +87,47 @@
 				font-size: 16px;
 				line-height: 19px;
 				color: $grey-5;
+			}
+		}
+	}
+}
+
+@include mobile {
+	.details {
+		height: 55%;
+		width: 100%;
+
+		.details__actions-container {
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			left: 12px;
+			margin: 0;
+		}
+
+		.details__description {
+			font-size: 18px;
+			line-height: 21px;
+			margin: 0 0 10px 0;
+		}
+
+		.details__user {
+			font-size: 12px;
+			line-height: 14px;
+
+			img {
+				width: 18px;
+				height: 18px;
+			}
+		}
+
+		.details__machine {
+			margin-top: 12px;
+			padding-top: 12px;
+
+			.details__machine-detail {
+				width: 50%;
+				margin-bottom: 18px;
 			}
 		}
 	}
