@@ -16,11 +16,7 @@ export const MainLayout = ({ children }: IMainLayoutProps) => {
 	useEffect(() => {
 		const paramValue = getUrlParams('photoId');
 
-		if (paramValue) {
-			setDetailPhotoId(paramValue);
-		} else {
-			setDetailPhotoId(paramValue);
-		}
+		setDetailPhotoId(paramValue);
 	}, [location.search, getUrlParams]);
 
 	return (
