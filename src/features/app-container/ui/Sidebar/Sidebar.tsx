@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.scss';
-import LogoIcon from '../../../../assets/icons/logo.svg';
+
 import { createSidebarViewModel } from './SidebarViewModel';
 
 import { Link } from 'react-router-dom';
@@ -12,7 +12,6 @@ export const Sidebar = () => {
 
 	return (
 		<aside className="sidebar">
-			<img className="sidebar__icon" src={LogoIcon} alt="logo" />
 			<div className="sidebar__navigation-container">
 				{viewModel.navigationItems.map((item) => (
 					<Link
@@ -24,7 +23,11 @@ export const Sidebar = () => {
 								: ''
 						}`}
 					>
-						<img src={item.icon} alt="navigation-icon" />
+						<img
+							src={item.icon}
+							className="sidebar__navigation-link-icon"
+							alt="navigation-icon"
+						/>
 					</Link>
 				))}
 			</div>

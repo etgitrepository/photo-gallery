@@ -2,7 +2,7 @@
 @import './src/styles/theme/responsive/settings.scss';
 
 .sidebar {
-	position: absolute;
+	position: fixed;
 	height: 100vh;
 	width: 90px;
 	background: $grey-2;
@@ -34,11 +34,11 @@
 		&--selected {
 			background: $grey-3;
 		}
+	}
 
-		img {
-			height: 24px;
-			width: 24px;
-		}
+	&__navigation-link-icon {
+		height: 24px;
+		width: 24px;
 	}
 }
 

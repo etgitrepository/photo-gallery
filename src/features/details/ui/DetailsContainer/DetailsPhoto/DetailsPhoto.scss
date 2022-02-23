@@ -6,7 +6,7 @@
 	align-items: center;
 	justify-content: center;
 
-	img {
+	&-img {
 		max-width: 100%;
 		height: 325px;
 	}
@@ -15,7 +15,7 @@
 		width: 100%;
 		height: 45%;
 
-		img {
+		&-img {
 			width: 100%;
 			height: unset;
 		}

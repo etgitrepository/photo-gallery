@@ -27,7 +27,7 @@
 			background: $blue-2;
 		}
 
-		img {
+		&-icon {
 			margin-right: 8px;
 		}
 	}
@@ -57,7 +57,7 @@
 		font-size: 18px;
 		line-height: 21px;
 
-		img {
+		&-img {
 			margin-right: 8px;
 			width: 30px;
 			height: 30px;
@@ -117,7 +117,7 @@
 			font-size: 12px;
 			line-height: 14px;
 
-			img {
+			&-img {
 				width: 18px;
 				height: 18px;
 			}

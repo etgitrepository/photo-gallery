@@ -28,6 +28,7 @@ export const Details = ({
 					<img
 						src={viewModel.favoriteButton.icon}
 						alt="details-favorite-button"
+						className="details__favorite-button-icon"
 					/>
 					<span>{viewModel.favoriteButton.label}</span>
 				</RoundedButton>
@@ -43,7 +44,11 @@ export const Details = ({
 			)}
 			{viewModel.user && (
 				<div className="details__user">
-					<img src={viewModel.user.image} alt="user"></img>
+					<img
+						className="details__user-img"
+						src={viewModel.user.image}
+						alt="user"
+					></img>
 					<p>{viewModel.user.name}</p>
 				</div>
 			)}

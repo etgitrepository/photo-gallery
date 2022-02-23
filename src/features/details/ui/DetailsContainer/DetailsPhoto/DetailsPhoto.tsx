@@ -9,7 +9,7 @@ interface IDetailsPhotoProps {
 export const DetailsPhoto = ({ viewModel }: IDetailsPhotoProps) => {
 	return (
 		<div className="details-photo">
-			<img src={viewModel.image} alt="details" />
+			<img className="details-photo-img" src={viewModel.image} alt="details" />
 		</div>
 	);
 };
