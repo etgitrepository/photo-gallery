@@ -27,11 +27,16 @@ describe('Sidebar', () => {
 	});
 
 	it('will render logo', () => {
+		mockedGetNavigationItems.mockReturnValue([
+			NavigationScheme.Gallery,
+			NavigationScheme.Favorites,
+		]);
+
 		renderComponent();
 
 		const imgs = screen.getAllByRole('img');
 
-		expect(imgs[0]).toHaveAttribute('src', 'logo.svg');
+		expect(imgs[0]).toHaveAttribute('src', 'gallery.svg');
 	});
 
 	it('will render both navigation items', () => {
